@@ -15,7 +15,6 @@ public class ProblemaModel{
         this.a02_descProblema = a02_descProblema;
     }
 
-
     public int getA02_idProblema() {
         return this.a02_idProblema;
     }
