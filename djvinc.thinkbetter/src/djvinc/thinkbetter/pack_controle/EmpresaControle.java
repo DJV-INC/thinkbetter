@@ -1,5 +1,7 @@
 package djvinc.thinkbetter.pack_controle;
 
+import java.util.List;
+
 import djvinc.thinkbetter.pack_model.EmpresaModel;
 import djvinc.thinkbetter.pack_persistencia.EmpresaPersistencia;
 
@@ -23,4 +25,7 @@ public class EmpresaControle {
         oEmpresaPersistencia.excluirEmpresa(oEmpresaModel);
     }
     
+    public List<EmpresaModel> consultarEmpresa() {
+    	return oEmpresaPersistencia.consultarEmpresa();
+    }
 }
