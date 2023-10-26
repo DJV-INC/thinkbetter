@@ -6,12 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
 public class MenuView extends JFrame {
 
@@ -51,16 +54,53 @@ public class MenuView extends JFrame {
 		contentPane.add(lblThinkbetter);
 		
 		JComboBox RegistrarCombo = new JComboBox();
-		RegistrarCombo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				CadastraEmpresaView cadastraEmpresa = new CadastraEmpresaView();
+
+		RegistrarCombo.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
 				
-				cadastraEmpresa.abreCadastroEmpresa();
+				if(e.getStateChange() == ItemEvent.SELECTED) {
+					if(RegistrarCombo.getSelectedItem().toString().equals("Empresa")) {
+						CadastraEmpresaView cadastraEmpresa = new CadastraEmpresaView();		
+						cadastraEmpresa.abreCadastroEmpresa();
+					}
+					
+					if(RegistrarCombo.getSelectedItem().toString().equals("Problema")) {
+						CadastraProblemaView cadastraProblema = new CadastraProblemaView();		
+						cadastraProblema.abreCadastroProblema();
+					}
+					
+					if(RegistrarCombo.getSelectedItem().toString().equals("Grupo")) {
+						CadastraGrupoView cadastraGrupo = new CadastraGrupoView();		
+						cadastraGrupo.abreCadastroGrupo();
+					}
+					
+					if(RegistrarCombo.getSelectedItem().toString().equals("Especialista")) {
+						CadastrarEspecialistaView cadastraEspecialista = new CadastrarEspecialistaView();		
+						cadastraEspecialista.abreCadastroEspecialista();
+					}
+					
+					if(RegistrarCombo.getSelectedItem().toString().equals("Critério")) {
+						CadastraCriterioView cadastraCriterio = new CadastraCriterioView();		
+						cadastraCriterio.abreCadastroCriterio();
+					}
+					
+					if(RegistrarCombo.getSelectedItem().toString().equals("Grau")) {
+						CadastraGrauView cadastraGrau = new CadastraGrauView();		
+						cadastraGrau.abreCadastroGrau();
+					}
+					
+				
+				
+				}
+				
 			}
 		});
+		
+		
+		
 		RegistrarCombo.addMouseListener(new MouseAdapter() {
 		});
-		RegistrarCombo.setModel(new DefaultComboBoxModel(new String[] {"Empresa", "Problema", "Grupo", "Especialista", "Critério", "Grau"}));
+		RegistrarCombo.setModel(new DefaultComboBoxModel(new String[] {"Escolha", "Empresa", "Problema", "Grupo", "Especialista", "Critério", "Grau"}));
 		RegistrarCombo.setBounds(12, 71, 94, 24);
 		contentPane.add(RegistrarCombo);
 		
@@ -72,7 +112,7 @@ public class MenuView extends JFrame {
 				oConsultarEmpresaView.abreConsultarEmpresa();
 			}
 		});
-		ConsultarCombo.setModel(new DefaultComboBoxModel(new String[] {"Empresa", "Problema", "Grupo", "Especialista", "Critério", "Grau"}));
+		ConsultarCombo.setModel(new DefaultComboBoxModel(new String[] {"Escolha", "Empresa", "Problema", "Grupo", "Especialista", "Critério", "Grau"}));
 		ConsultarCombo.setBounds(121, 71, 94, 24);
 		contentPane.add(ConsultarCombo);
 		
