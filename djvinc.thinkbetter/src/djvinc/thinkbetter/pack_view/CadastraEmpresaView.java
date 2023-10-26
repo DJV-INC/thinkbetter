@@ -58,6 +58,7 @@ public class CadastraEmpresaView extends JDialog {
 		textField.setBounds(12, 66, 416, 29);
 		contentPanel.add(textField);
 		textField.setColumns(10);
+		
 		JLabel lblEmpresaCadastrada = new JLabel("Empresa cadastrada!");
 		lblEmpresaCadastrada.setBounds(12, 208, 151, 15);
 		contentPanel.add(lblEmpresaCadastrada);
@@ -75,7 +76,6 @@ public class CadastraEmpresaView extends JDialog {
 						String nome = textField.getText();
 						
 						oEmpresaControle.inserirEmpresa(nome);
-						
 						
 						lblEmpresaCadastrada.setVisible(true);
 						
