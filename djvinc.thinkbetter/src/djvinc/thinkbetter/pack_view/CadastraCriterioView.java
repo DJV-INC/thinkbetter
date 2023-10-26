@@ -2,19 +2,27 @@ package djvinc.thinkbetter.pack_view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import djvinc.thinkbetter.pack_controle.CriterioControle;
+
 import javax.swing.JTextPane;
 import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.DefaultComboBoxModel;
 
 public class CadastraCriterioView extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -49,36 +57,56 @@ public class CadastraCriterioView extends JDialog {
 				lblDescrioDoCritrio.setBounds(12, 39, 173, 15);
 				contentPanel.add(lblDescrioDoCritrio);
 			}
-			{
+		
 				JTextPane textPane = new JTextPane();
-				textPane.setBounds(12, 66, 416, 94);
+				textPane.setBounds(12, 66, 416, 64);
 				contentPanel.add(textPane);
-			}
-			{
+			
+			
 				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(12, 199, 134, 24);
+				comboBox.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3"}));
+				comboBox.setBounds(159, 168, 134, 24);
 				contentPanel.add(comboBox);
-			}
-			{
-				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(159, 199, 134, 24);
-				contentPanel.add(comboBox);
-			}
+			
 			{
 				JLabel label = new JLabel("Tipo do critério");
-				label.setBounds(12, 172, 134, 15);
+				label.setBounds(12, 141, 134, 15);
 				contentPanel.add(label);
 			}
 			{
 				JLabel label = new JLabel("Problema");
-				label.setBounds(159, 172, 134, 15);
+				label.setBounds(159, 141, 134, 15);
 				contentPanel.add(label);
 			}
+			
+			JLabel lblCriterioRegistrado = new JLabel("Critério registrado");
+			lblCriterioRegistrado.setBounds(12, 203, 135, 15);
+			contentPanel.add(lblCriterioRegistrado);
+			
+			textField = new JTextField();
+			textField.setBounds(10, 170, 124, 20);
+			contentPanel.add(textField);
+			textField.setColumns(10);
+			lblCriterioRegistrado.setVisible(false);
+				
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						CriterioControle oCriterioControle = new CriterioControle();
+					
+						String descCriterio = textPane.getText();
+						String problema = comboBox.getSelectedItem().toString();
+						String tipoCriterio = textField.getText();
+						
+						oCriterioControle.inserirCriterio(descCriterio, tipoCriterio, 1);
+						lblCriterioRegistrado.setVisible(true);
+						
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -90,5 +118,4 @@ public class CadastraCriterioView extends JDialog {
 			}
 		}
 	}
-
 }

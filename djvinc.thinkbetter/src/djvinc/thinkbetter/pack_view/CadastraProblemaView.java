@@ -2,14 +2,20 @@ package djvinc.thinkbetter.pack_view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import djvinc.thinkbetter.pack_controle.ProblemaControle;
+
 import javax.swing.JTextPane;
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class CadastraProblemaView extends JDialog {
 
@@ -52,16 +58,23 @@ public class CadastraProblemaView extends JDialog {
 		JTextPane textPane = new JTextPane();
 		textPane.setBounds(12, 66, 404, 99);
 		contentPanel.add(textPane);
-		{
-			JComboBox comboBox = new JComboBox();
-			comboBox.setBounds(12, 199, 186, 24);
-			contentPanel.add(comboBox);
-		}
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Orange 4", "Accenture"}));
+		comboBox.setSelectedIndex(0);
+		comboBox.setBounds(12, 199, 186, 24);
+		contentPanel.add(comboBox);
+		
 		{
 			JLabel lblEmpresa = new JLabel("Empresa");
 			lblEmpresa.setBounds(12, 177, 70, 15);
 			contentPanel.add(lblEmpresa);
 		}
+		
+		JLabel lblProblemaRegistrado = new JLabel("Problema registrado!");
+		lblProblemaRegistrado.setBounds(257, 204, 142, 15);
+		contentPanel.add(lblProblemaRegistrado);
+		lblProblemaRegistrado.setVisible(false);
 		
 		{
 			JPanel buttonPane = new JPanel();
@@ -69,6 +82,21 @@ public class CadastraProblemaView extends JDialog {
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						ProblemaControle oProblemaControle = new ProblemaControle();
+						
+						String descProblema = textPane.getText();
+						
+						//Pensando no select funcional com id da empresa, talvez
+						//String idEmpresa = comboBox.getSelectedItem().toString();
+						
+						oProblemaControle.inserirProblema(1, descProblema);
+						lblProblemaRegistrado.setVisible(true);
+						
+					}
+				});
+				
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

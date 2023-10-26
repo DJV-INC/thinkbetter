@@ -2,6 +2,8 @@ package djvinc.thinkbetter.pack_view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -9,7 +11,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import djvinc.thinkbetter.pack_controle.GrupoControle;
+
 import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class CadastraGrupoView extends JDialog {
 
@@ -58,17 +64,37 @@ public class CadastraGrupoView extends JDialog {
 				lblNome_1.setBounds(12, 107, 70, 15);
 				contentPanel.add(lblNome_1);
 			}
-			{
-				JComboBox comboBox = new JComboBox();
-				comboBox.setBounds(12, 134, 152, 24);
-				contentPanel.add(comboBox);
-			}
+			
+			JComboBox comboBox = new JComboBox();
+			comboBox.setModel(new DefaultComboBoxModel(new String[] {"I cant take my eyes off you"}));
+			comboBox.setBounds(12, 134, 412, 24);
+			contentPanel.add(comboBox);
+			
+			
+			JLabel lblGrupoRegistrado = new JLabel("Grupo registrado");
+			lblGrupoRegistrado.setBounds(12, 202, 186, 15);
+			contentPanel.add(lblGrupoRegistrado);
+			lblGrupoRegistrado.setVisible(false);
+			
 			
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
+				okButton.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						GrupoControle oGrupoControle = new GrupoControle();
+						
+						String nome = textField.getText();
+						//String problema = comboBox.getSelectedItem().toString();
+						
+						oGrupoControle.inserirGrupo(nome, 2);;
+						
+						lblGrupoRegistrado.setVisible(true);
+						
+					}
+				});
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
