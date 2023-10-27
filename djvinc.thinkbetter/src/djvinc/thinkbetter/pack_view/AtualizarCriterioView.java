@@ -9,28 +9,27 @@ import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import djvinc.thinkbetter.pack_controle.CriterioControle;
 
-import javax.swing.JTextPane;
-import javax.swing.JComboBox;
-import javax.swing.JTextField;
-import javax.swing.DefaultComboBoxModel;
-
-public class CadastraCriterioView extends JDialog {
+public class AtualizarCriterioView extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
+	private CriterioControle oCriterioControle;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JTextField textFieldId;
 
 	/**
 	 * Launch the application.
 	 */
-	public void abreCadastroCriterio() {
+	public void abreAtualizarCriterio() {
 		try {
-			CadastraCriterioView dialog = new CadastraCriterioView();
+			AtualizarCriterioView dialog = new AtualizarCriterioView();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -41,7 +40,7 @@ public class CadastraCriterioView extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CadastraCriterioView() {
+	public AtualizarCriterioView() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,62 +48,70 @@ public class CadastraCriterioView extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			{
-				JLabel lblRegistrarEmpresa = new JLabel("Registrar - Critério");
-				lblRegistrarEmpresa.setBounds(12, 12, 186, 15);
-				contentPanel.add(lblRegistrarEmpresa);
+				JLabel lblAtualizarEmpresa = new JLabel("Atualizar - Critério");
+				lblAtualizarEmpresa.setBounds(12, 12, 186, 15);
+				contentPanel.add(lblAtualizarEmpresa);
+			}
+			
+			{
+				JLabel lblIdDaEmpresa = new JLabel("ID da Empresa");
+				lblIdDaEmpresa.setBounds(12, 39, 135, 15);
+				contentPanel.add(lblIdDaEmpresa);
+			}
+			{
+				textFieldId = new JTextField();
+				textFieldId.setColumns(10);
+				textFieldId.setBounds(124, 39, 209, 20);
+				contentPanel.add(textFieldId);
 			}
 			{
 				JLabel lblDescrioDoCritrio = new JLabel("Descrição do critério");
-				lblDescrioDoCritrio.setBounds(12, 39, 173, 15);
+				lblDescrioDoCritrio.setBounds(12, 71, 173, 15);
 				contentPanel.add(lblDescrioDoCritrio);
 			}
 		
 				JTextPane textPane = new JTextPane();
-				textPane.setBounds(12, 66, 416, 64);
+				textPane.setBounds(12, 98, 416, 64);
 				contentPanel.add(textPane);
 			
 			{
 				JLabel label = new JLabel("Tipo do critério");
-				label.setBounds(12, 141, 134, 15);
+				label.setBounds(14, 174, 134, 15);
 				contentPanel.add(label);
 			}
 			{
 				JLabel label = new JLabel("Problema");
-				label.setBounds(159, 141, 134, 15);
+				label.setBounds(161, 174, 134, 15);
 				contentPanel.add(label);
 			}
 			
-			JLabel lblCriterioRegistrado = new JLabel("Critério registrado");
-			lblCriterioRegistrado.setBounds(12, 203, 135, 15);
-			contentPanel.add(lblCriterioRegistrado);
-			
 			textField = new JTextField();
-			textField.setBounds(10, 170, 124, 20);
+			textField.setBounds(12, 203, 124, 20);
 			contentPanel.add(textField);
 			textField.setColumns(10);
 			{
 				textField_1 = new JTextField();
 				textField_1.setColumns(10);
-				textField_1.setBounds(154, 170, 124, 20);
+				textField_1.setBounds(156, 203, 124, 20);
 				contentPanel.add(textField_1);
 			}
-			lblCriterioRegistrado.setVisible(false);
-				
+		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						CriterioControle oCriterioControle = new CriterioControle();
-					
-						String sDescCriterio = textPane.getText();
-						String sTipoCriterio = textField.getText();
-						int iProblema = Integer.parseInt(textField_1.getText());
+					public void actionPerformed(ActionEvent arg0) {
+						oCriterioControle = new CriterioControle();
 						
-						oCriterioControle.inserirCriterio(sDescCriterio, sTipoCriterio, iProblema);
-						lblCriterioRegistrado.setVisible(true);
+						int iId = Integer.parseInt(textFieldId.getText());
+						String sDesc = textPane.getText();
+						String sTipo = textField.getText();
+						int iIdProblema = Integer.parseInt(textField_1.getText());
+						
+						oCriterioControle.alterarCriterio(iId, sDesc, sTipo, iIdProblema);
+						
 						
 					}
 				});
@@ -119,4 +126,6 @@ public class CadastraCriterioView extends JDialog {
 			}
 		}
 	}
+
+}
 }

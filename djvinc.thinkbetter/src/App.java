@@ -15,14 +15,7 @@ public class App {
     	
     	MenuView view = new MenuView();
     	
-    	view.iniciaTela();
-    	
-    	
-    	
-    	/*view.iniciaTela();
-    	
-    	
-        /*EmpresaControle oEmpresaControle = new EmpresaControle();
+    	EmpresaControle oEmpresaControle = new EmpresaControle();
         ProblemaControle oProblemaControle = new ProblemaControle();
         GrupoControle oGrupoControle = new GrupoControle();
         EspecialistaControle oEspecialistaControle = new EspecialistaControle();
@@ -35,8 +28,8 @@ public class App {
 
     
 
-        oProblemaControle.inserirProblema(1, "Analisando a beleza do victor");
-        oProblemaControle.alterarProblema(1, 1, "Apreciando a beleza do victor");
+        oProblemaControle.inserirProblema(1, "Problema Java");
+        oProblemaControle.alterarProblema(1, 1, "Problema Java atualizado");
 
         
         oGrupoControle.inserirGrupo("A", 1);
@@ -45,14 +38,19 @@ public class App {
         oEspecialistaControle.inserirEspecialista("sql", 1, 1);
         oEspecialistaControle.alterarEspecialista(1, "sql2", 1, 1);
 
-        oCriterioControle.inserirCriterio("beleza, inteligencia, musicalidade", "fisico", 1);
-        oCriterioControle.alterarCriterio(1, "beleza", "não so fisico", 1);
+        oCriterioControle.inserirCriterio("descrição", "tipo ", 1);
+        oCriterioControle.alterarCriterio(1, "descrição att", "tipo att", 1);
 
         oGrauControle.inserirGrau(10, 8, 1, 1);
         oGrauControle.alterarGrau(1, 9, 7, 1, 1);
 
-        oResultadoControle.inserirResultado(10, "10 olhadas");
-        oResultadoControle.alterarResultado(1, 5, "5 olhadas");*/
+        oResultadoControle.inserirResultado(10, "Resultado teste");
+        oResultadoControle.alterarResultado(1, 5, "Resultado att");
+        
+    	
+    	view.iniciaTela();
+    	
+    	
         
 
         

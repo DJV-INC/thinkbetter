@@ -1,5 +1,7 @@
 package djvinc.thinkbetter.pack_controle;
 
+import java.util.List;
+
 import djvinc.thinkbetter.pack_model.GrupoModel;
 import djvinc.thinkbetter.pack_persistencia.GrupoPersistencia;
 
@@ -24,7 +26,10 @@ public class GrupoControle {
 
     public void excluirGrupo(int id) {
         oGrupoModel.setA03_idGrupo(id);
-
         oGrupoPersistencia.excluirGrupo(oGrupoModel);
+    }
+    
+    public List<GrupoModel> consultarGrupo() {
+    	return oGrupoPersistencia.consultarGrupo();
     }
 }

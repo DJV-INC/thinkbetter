@@ -2,33 +2,31 @@ package djvinc.thinkbetter.pack_view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-import djvinc.thinkbetter.pack_controle.EmpresaControle;
+import djvinc.thinkbetter.pack_controle.GrupoControle;
 
-import javax.swing.JLabel;
-import javax.swing.JTextField;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.util.concurrent.TimeUnit;
-
-public class CadastraEmpresaView extends JDialog {
+public class ExcluirGrupoView extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
+	private GrupoControle oGrupoControle;
 	private JTextField textField;
-	private CadastraEmpresaView dialog;
 
 	/**
 	 * Launch the application.
 	 */
-	public void abreCadastroEmpresa() {
+	public void abreExcluirGrupo() {
 		try {
-			dialog = new CadastraEmpresaView();
+			ExcluirGrupoView dialog = new ExcluirGrupoView();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -39,31 +37,25 @@ public class CadastraEmpresaView extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CadastraEmpresaView() {
+	public ExcluirGrupoView() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
-		{
-			JLabel lblRegistrarEmpresa = new JLabel("Registrar - Empresa");
-			lblRegistrarEmpresa.setBounds(12, 12, 186, 15);
-			contentPanel.add(lblRegistrarEmpresa);
-		}
 		
-		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(12, 39, 70, 15);
-		contentPanel.add(lblNome);
+		JLabel lblExcluirGrupo = new JLabel("Excluir - Grupo");
+		lblExcluirGrupo.setBounds(12, 12, 147, 15);
+		contentPanel.add(lblExcluirGrupo);
+		
+		JLabel lblIdDaGrupo = new JLabel("ID do Grupo");
+		lblIdDaGrupo.setBounds(12, 75, 147, 15);
+		contentPanel.add(lblIdDaGrupo);
 		
 		textField = new JTextField();
-		textField.setBounds(12, 66, 416, 29);
+		textField.setBounds(12, 102, 147, 19);
 		contentPanel.add(textField);
 		textField.setColumns(10);
-		
-		JLabel lblEmpresaCadastrada = new JLabel("Empresa cadastrada!");
-		lblEmpresaCadastrada.setBounds(12, 208, 151, 15);
-		contentPanel.add(lblEmpresaCadastrada);
-		lblEmpresaCadastrada.setVisible(false);
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -71,15 +63,10 @@ public class CadastraEmpresaView extends JDialog {
 			{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						EmpresaControle oEmpresaControle = new EmpresaControle();
+					public void actionPerformed(ActionEvent arg0) {
+						oGrupoControle = new GrupoControle();
 						
-						String nome = textField.getText();
-						
-						oEmpresaControle.inserirEmpresa(nome);
-						
-						lblEmpresaCadastrada.setVisible(true);
-						
+						oGrupoControle.excluirGrupo(Integer.parseInt(textField.getText()));
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -93,4 +80,5 @@ public class CadastraEmpresaView extends JDialog {
 			}
 		}
 	}
+
 }

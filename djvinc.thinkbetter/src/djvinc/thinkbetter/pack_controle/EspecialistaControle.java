@@ -1,5 +1,7 @@
 package djvinc.thinkbetter.pack_controle;
 
+import java.util.List;
+
 import djvinc.thinkbetter.pack_model.EspecialistaModel;
 import djvinc.thinkbetter.pack_persistencia.EspecialistaPersistencia;
 
@@ -28,6 +30,10 @@ public class EspecialistaControle {
         oEspecialistaModel.setA04_idEspecialista(id);
 
         oEspecialistaPersistencia.excluirEspecialista(oEspecialistaModel);
+    }
+    
+    public List<EspecialistaModel> consultarEspecialista() {
+    	return oEspecialistaPersistencia.consultarEspecialista();
     }
 
     

@@ -15,11 +15,14 @@ import djvinc.thinkbetter.pack_controle.GrauControle;
 
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTextField;
 
 public class CadastraGrauView extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
+	private JTextField textField;
+	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -71,22 +74,11 @@ public class CadastraGrauView extends JDialog {
 				comboBox.setBounds(145, 91, 121, 24);
 				contentPanel.add(comboBox);
 			
-			
-				JComboBox comboBox_2 = new JComboBox();
-				comboBox_2.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
-				comboBox_2.setBounds(307, 91, 121, 24);
-				contentPanel.add(comboBox_2);
-			
 			{
 				JLabel label = new JLabel("Critério");
 				label.setBounds(307, 64, 121, 15);
 				contentPanel.add(label);
 			}
-			
-				JComboBox comboBox_3 = new JComboBox();
-				comboBox_3.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}));
-				comboBox_3.setBounds(12, 168, 309, 24);
-				contentPanel.add(comboBox_3);
 			
 			{
 				JLabel label = new JLabel("Especialista");
@@ -97,6 +89,18 @@ public class CadastraGrauView extends JDialog {
 				JLabel lblGrauRegistrado = new JLabel("Grau registrado");
 				lblGrauRegistrado.setBounds(12, 203, 121, 15);
 				contentPanel.add(lblGrauRegistrado);
+				{
+					textField = new JTextField();
+					textField.setBounds(307, 94, 114, 19);
+					contentPanel.add(textField);
+					textField.setColumns(10);
+				}
+				{
+					textField_1 = new JTextField();
+					textField_1.setBounds(12, 168, 260, 19);
+					contentPanel.add(textField_1);
+					textField_1.setColumns(10);
+				}
 				lblGrauRegistrado.setVisible(false);
 			
 			JPanel buttonPane = new JPanel();
@@ -110,10 +114,10 @@ public class CadastraGrauView extends JDialog {
 					
 						int grauCerteza = Integer.parseInt(comboBox_1.getSelectedItem().toString());
 						int grauIncerteza = Integer.parseInt(comboBox.getSelectedItem().toString());
-						int criterio = Integer.parseInt(comboBox_2.getSelectedItem().toString());
-						int especialista = Integer.parseInt(comboBox_3.getSelectedItem().toString());
+						int criterio = Integer.parseInt(textField.getText());
+						int especialista = Integer.parseInt(textField.getText());
 						
-						oGrauControle.inserirGrau(grauCerteza, grauIncerteza, 1, 1);
+						oGrauControle.inserirGrau(grauCerteza, grauIncerteza, criterio, especialista);
 						lblGrauRegistrado.setVisible(true);
 						
 					}

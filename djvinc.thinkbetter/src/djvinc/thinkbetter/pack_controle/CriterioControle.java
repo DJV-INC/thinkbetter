@@ -1,5 +1,7 @@
 package djvinc.thinkbetter.pack_controle;
 
+import java.util.List;
+
 import djvinc.thinkbetter.pack_model.CriterioModel;
 import djvinc.thinkbetter.pack_persistencia.CriterioPersistencia;
 
@@ -28,5 +30,8 @@ public class CriterioControle {
 
         oCriterioPersistencia.excluirCriterio(oCriterioModel);
     }
-
+    
+    public List<CriterioModel> consultarCriterio() {
+    	return oCriterioPersistencia.consultarCriterio();
+    }
 }

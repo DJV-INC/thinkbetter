@@ -2,8 +2,6 @@ package djvinc.thinkbetter.pack_view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
@@ -13,23 +11,24 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import djvinc.thinkbetter.pack_controle.GrupoControle;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-
-public class CadastraGrupoView extends JDialog {
+public class AtualizarGrupoView extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
+	private GrupoControle oGrupoControle;
+	private JTextField textFieldId;
 	private JTextField textField;
 	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
 	 */
-	public void abreCadastroGrupo() {
+	public void abreAtualizarGrupo() {
 		try {
-			CadastraGrupoView dialog = new CadastraGrupoView();
+			AtualizarGrupoView dialog = new AtualizarGrupoView();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -40,7 +39,7 @@ public class CadastraGrupoView extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CadastraGrupoView() {
+	public AtualizarGrupoView() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -48,53 +47,53 @@ public class CadastraGrupoView extends JDialog {
 		contentPanel.setLayout(null);
 		{
 			{
-				JLabel lblRegistrarGrupo = new JLabel("Registrar - Grupo");
-				lblRegistrarGrupo.setBounds(12, 12, 186, 15);
-				contentPanel.add(lblRegistrarGrupo);
+				JLabel lblAtualizarGrupo = new JLabel("Atualizar - Grupo");
+				lblAtualizarGrupo.setBounds(12, 12, 186, 15);
+				contentPanel.add(lblAtualizarGrupo);
+			}
+			{
+				JLabel lblIdDaEmpresa = new JLabel("ID do Grupo");
+				lblIdDaEmpresa.setBounds(12, 39, 135, 15);
+				contentPanel.add(lblIdDaEmpresa);
+			}
+			{
+				textFieldId = new JTextField();
+				textFieldId.setColumns(10);
+				textFieldId.setBounds(12, 58, 209, 29);
+				contentPanel.add(textFieldId);
 			}
 			JLabel lblNome = new JLabel("Nome");
-			lblNome.setBounds(12, 39, 70, 15);
+			lblNome.setBounds(12, 99, 70, 15);
 			contentPanel.add(lblNome);
 			
 			textField = new JTextField();
-			textField.setBounds(12, 66, 416, 29);
+			textField.setBounds(12, 126, 416, 29);
 			contentPanel.add(textField);
 			textField.setColumns(10);
 			{
 				JLabel lblNome_1 = new JLabel("Problema");
-				lblNome_1.setBounds(12, 107, 70, 15);
+				lblNome_1.setBounds(12, 167, 70, 15);
 				contentPanel.add(lblNome_1);
 			}
-			
-			
-			JLabel lblGrupoRegistrado = new JLabel("Grupo registrado");
-			lblGrupoRegistrado.setBounds(12, 202, 186, 15);
-			contentPanel.add(lblGrupoRegistrado);
 			{
 				textField_1 = new JTextField();
-				textField_1.setBounds(12, 134, 416, 29);
+				textField_1.setBounds(12, 194, 416, 29);
 				contentPanel.add(textField_1);
 				textField_1.setColumns(10);
 			}
-			lblGrupoRegistrado.setVisible(false);
 			
-			
+		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
 			getContentPane().add(buttonPane, BorderLayout.SOUTH);
 			{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						GrupoControle oGrupoControle = new GrupoControle();
+					public void actionPerformed(ActionEvent arg0) {
+						oGrupoControle = new GrupoControle();
 						
-						String nome = textField.getText();
-						//String problema = comboBox.getSelectedItem().toString();
-						
-						oGrupoControle.inserirGrupo(nome, 2);;
-						
-						lblGrupoRegistrado.setVisible(true);
-						
+						oGrupoControle.alterarGrupo(Integer.parseInt(textFieldId.getText()), textField.getText(), 
+								Integer.parseInt(textField_1.getText()));
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -108,5 +107,5 @@ public class CadastraGrupoView extends JDialog {
 			}
 		}
 	}
-
+	}
 }

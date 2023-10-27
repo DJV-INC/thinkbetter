@@ -2,38 +2,35 @@ package djvinc.thinkbetter.pack_view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JList;
-import javax.swing.AbstractListModel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import djvinc.thinkbetter.pack_controle.EmpresaControle;
+import djvinc.thinkbetter.pack_controle.ProblemaControle;
 import djvinc.thinkbetter.pack_model.EmpresaModel;
+import djvinc.thinkbetter.pack_model.ProblemaModel;
 
-import javax.swing.JLabel;
-import javax.swing.JSeparator;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-public class ConsultarEmpresaView extends JDialog {
+public class ConsultarProblemaView extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private EmpresaControle oEmpresaControle;
-	private JTable table;
-
+	private ProblemaControle oProblemaControle;
+	private final JTable table;
 	/**
 	 * Launch the application.
 	 */
-	public void abreConsultarEmpresa() {
+	public void abreConsultarProblema() {
 		try {
-			ConsultarEmpresaView dialog = new ConsultarEmpresaView();
+			ConsultarProblemaView dialog = new ConsultarProblemaView();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -44,27 +41,28 @@ public class ConsultarEmpresaView extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public ConsultarEmpresaView() {
+	public ConsultarProblemaView() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lblConsultarEmpresa = new JLabel("Consultar empresa");
-		lblConsultarEmpresa.setBounds(12, 12, 172, 15);
-		contentPanel.add(lblConsultarEmpresa);
-			String[] sNomesColunas = {"ID", "NOMES"};
+		JLabel lblConsultarProblema = new JLabel("Consultar problema");
+		lblConsultarProblema.setBounds(12, 12, 172, 15);
+		contentPanel.add(lblConsultarProblema);
+			String[] sNomesColunas = {"ID","DESCRIÇÃO", "ID EMPRESA"};
 			DefaultTableModel oModeloTabela = new DefaultTableModel(sNomesColunas, 0);
-			oEmpresaControle = new EmpresaControle();
+			oProblemaControle = new ProblemaControle();
 			
-			for(EmpresaModel empresa : oEmpresaControle.consultarEmpresa()) {
-				int sId = empresa.getA01_codigo();
-				String sNome = empresa.getA01_nomeEmpresa();
+			for(ProblemaModel problema : oProblemaControle.consultarProblema()) {
+				int iId = problema.getA02_idProblema();
+				int iIdEmpresa = problema.getA02_idEmpresa();
+				String sDesc = problema.getA02_descProblema();
 				
-				Object[] sDados = {sId, sNome};
+				Object[] oDados = {iId, sDesc, iIdEmpresa};
 				
-				oModeloTabela.addRow(sDados);
+				oModeloTabela.addRow(oDados);
 			}
 			
 		JScrollPane scrollPane = new JScrollPane();
@@ -80,8 +78,9 @@ public class ConsultarEmpresaView extends JDialog {
 		JButton btnExcluir = new JButton("Excluir");
 		btnExcluir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ExcluirEmpresaView oExcluirEmpresa = new ExcluirEmpresaView();
-				oExcluirEmpresa.abreExcluirEmpresa();
+				ExcluirProblemaView oExcluirProblema = new ExcluirProblemaView();
+				
+				oExcluirProblema.abreExcluirProblema();
 			}
 		});
 		btnExcluir.setBounds(311, 40, 117, 25);
@@ -90,18 +89,13 @@ public class ConsultarEmpresaView extends JDialog {
 		JButton btnAtualizar = new JButton("Atualizar");
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AtualizarEmpresaView oAtualizarEmpresa = new AtualizarEmpresaView();
+				AtualizarProblemaView oAtualizarProblema = new AtualizarProblemaView();
 				
-				oAtualizarEmpresa.abreAtualizarView();
+				oAtualizarProblema.abreAtualizarProblema();
 			}
 		});
 		btnAtualizar.setBounds(12, 40, 117, 25);
 		contentPanel.add(btnAtualizar);
-		
-		
-		
-		
-		
 		
 		{
 			JPanel buttonPane = new JPanel();
@@ -120,4 +114,5 @@ public class ConsultarEmpresaView extends JDialog {
 			}
 		}
 	}
+
 }

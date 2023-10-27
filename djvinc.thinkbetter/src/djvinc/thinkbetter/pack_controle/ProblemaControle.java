@@ -1,5 +1,7 @@
 package djvinc.thinkbetter.pack_controle;
 
+import java.util.List;
+
 import djvinc.thinkbetter.pack_model.ProblemaModel;
 import djvinc.thinkbetter.pack_persistencia.ProblemaPersistencia;
 
@@ -26,6 +28,10 @@ public class ProblemaControle {
         oProblemaModel.setA02_idProblema(id);
 
         oProblemaPersistencia.excluirProblema(oProblemaModel);
+    }
+    
+    public List<ProblemaModel> consultarProblema() {
+    	return oProblemaPersistencia.consultarProblema();
     }
     
 }

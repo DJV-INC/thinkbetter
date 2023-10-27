@@ -1,5 +1,7 @@
 package djvinc.thinkbetter.pack_controle;
 
+import java.util.List;
+
 import djvinc.thinkbetter.pack_model.GrauModel;
 import djvinc.thinkbetter.pack_persistencia.GrauPersistencia;
 
@@ -30,5 +32,9 @@ public class GrauControle {
         oGrauModel.setA06_idGrau(id);
 
         oGrauPersistencia.excluirGrau(oGrauModel);
+    }
+    
+    public List<GrauModel> consultarGrau() {
+    	return oGrauPersistencia.consultarGrau();
     }
 }

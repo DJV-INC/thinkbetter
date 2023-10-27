@@ -5,30 +5,29 @@ import java.awt.FlowLayout;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import djvinc.thinkbetter.pack_controle.EmpresaControle;
-
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.concurrent.TimeUnit;
 
-public class CadastraEmpresaView extends JDialog {
+public class AtualizarEmpresaView extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
 	private JTextField textField;
-	private CadastraEmpresaView dialog;
+	private EmpresaControle oEmpresaControle;
+	private JTextField textFieldId;
 
 	/**
 	 * Launch the application.
 	 */
-	public void abreCadastroEmpresa() {
+	public void abreAtualizarView() {
 		try {
-			dialog = new CadastraEmpresaView();
+			AtualizarEmpresaView dialog = new AtualizarEmpresaView();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -39,31 +38,37 @@ public class CadastraEmpresaView extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CadastraEmpresaView() {
+	public AtualizarEmpresaView() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JLabel lblRegistrarEmpresa = new JLabel("Registrar - Empresa");
-			lblRegistrarEmpresa.setBounds(12, 12, 186, 15);
-			contentPanel.add(lblRegistrarEmpresa);
+			JLabel lblAtualizarEmpresa = new JLabel("Atualizar - Empresa");
+			lblAtualizarEmpresa.setBounds(12, 12, 186, 15);
+			contentPanel.add(lblAtualizarEmpresa);
 		}
 		
 		JLabel lblNome = new JLabel("Nome");
-		lblNome.setBounds(12, 39, 70, 15);
+		lblNome.setBounds(12, 107, 70, 15);
 		contentPanel.add(lblNome);
 		
 		textField = new JTextField();
-		textField.setBounds(12, 66, 416, 29);
+		textField.setBounds(12, 134, 416, 29);
 		contentPanel.add(textField);
 		textField.setColumns(10);
-		
-		JLabel lblEmpresaCadastrada = new JLabel("Empresa cadastrada!");
-		lblEmpresaCadastrada.setBounds(12, 208, 151, 15);
-		contentPanel.add(lblEmpresaCadastrada);
-		lblEmpresaCadastrada.setVisible(false);
+		{
+			JLabel lblIdDaEmpresa = new JLabel("ID da Empresa");
+			lblIdDaEmpresa.setBounds(12, 39, 135, 15);
+			contentPanel.add(lblIdDaEmpresa);
+		}
+		{
+			textFieldId = new JTextField();
+			textFieldId.setColumns(10);
+			textFieldId.setBounds(12, 66, 209, 29);
+			contentPanel.add(textFieldId);
+		}
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -71,15 +76,10 @@ public class CadastraEmpresaView extends JDialog {
 			{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						EmpresaControle oEmpresaControle = new EmpresaControle();
+					public void actionPerformed(ActionEvent arg0) {
+						oEmpresaControle = new EmpresaControle();
 						
-						String nome = textField.getText();
-						
-						oEmpresaControle.inserirEmpresa(nome);
-						
-						lblEmpresaCadastrada.setVisible(true);
-						
+						oEmpresaControle.atualizarEmpresa(Integer.parseInt(textFieldId.getText()), textField.getText());
 					}
 				});
 				okButton.setActionCommand("OK");
@@ -93,4 +93,5 @@ public class CadastraEmpresaView extends JDialog {
 			}
 		}
 	}
+
 }

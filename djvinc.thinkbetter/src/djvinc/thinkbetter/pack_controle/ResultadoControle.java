@@ -1,5 +1,7 @@
 package djvinc.thinkbetter.pack_controle;
 
+import java.util.List;
+
 import djvinc.thinkbetter.pack_model.ResultadoModel;
 import djvinc.thinkbetter.pack_persistencia.ResultadoPersistencia;
 
@@ -26,5 +28,9 @@ public class ResultadoControle {
         oResultadoModel.setA07_idResultado(id);
 
         oResultadoPersistencia.excluirResultado(oResultadoModel);
+    }
+    
+    public List<ResultadoModel> consultarResultado() {
+    	return oResultadoPersistencia.consultarResultado();
     }
 }

@@ -2,34 +2,33 @@ package djvinc.thinkbetter.pack_view;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JTextPane;
 import javax.swing.border.EmptyBorder;
 
 import djvinc.thinkbetter.pack_controle.ProblemaControle;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-import javax.swing.JTextPane;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
-
-public class CadastraProblemaView extends JDialog {
+public class AtualizarProblemaView extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
+	private ProblemaControle oProblemaControle;
 	private JTextField textField;
+	private JTextField textFieldId;
 
 	/**
 	 * Launch the application.
 	 */
-	public void abreCadastroProblema() {
+	public void abreAtualizarProblema() {
 		try {
-			CadastraProblemaView dialog = new CadastraProblemaView();
+			AtualizarProblemaView dialog = new AtualizarProblemaView();
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -40,7 +39,7 @@ public class CadastraProblemaView extends JDialog {
 	/**
 	 * Create the dialog.
 	 */
-	public CadastraProblemaView() {
+	public AtualizarProblemaView() {
 		setBounds(100, 100, 450, 300);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -53,31 +52,37 @@ public class CadastraProblemaView extends JDialog {
 		}
 		{
 			JLabel lblDescrioDoProblema = new JLabel("Descrição do problema");
-			lblDescrioDoProblema.setBounds(12, 39, 186, 15);
+			lblDescrioDoProblema.setBounds(12, 68, 186, 15);
 			contentPanel.add(lblDescrioDoProblema);
 		}
 		
+		{
+			JLabel lblIdDaEmpresa = new JLabel("ID da Empresa");
+			lblIdDaEmpresa.setBounds(12, 39, 135, 15);
+			contentPanel.add(lblIdDaEmpresa);
+		}
+		{
+			textFieldId = new JTextField();
+			textFieldId.setColumns(10);
+			textFieldId.setBounds(126, 39, 209, 19);
+			contentPanel.add(textFieldId);
+		}
+		
 		JTextPane textPane = new JTextPane();
-		textPane.setBounds(12, 66, 404, 99);
+		textPane.setBounds(12, 95, 404, 99);
 		contentPanel.add(textPane);
 		
 		{
 			JLabel lblEmpresa = new JLabel("Empresa");
-			lblEmpresa.setBounds(12, 177, 70, 15);
+			lblEmpresa.setBounds(12, 206, 70, 15);
 			contentPanel.add(lblEmpresa);
 		}
-		
-		JLabel lblProblemaRegistrado = new JLabel("Problema registrado!");
-		lblProblemaRegistrado.setBounds(257, 204, 159, 15);
-		contentPanel.add(lblProblemaRegistrado);
 		{
 			textField = new JTextField();
-			textField.setBounds(12, 204, 168, 19);
+			textField.setBounds(82, 206, 168, 19);
 			contentPanel.add(textField);
 			textField.setColumns(10);
 		}
-		lblProblemaRegistrado.setVisible(false);
-		
 		{
 			JPanel buttonPane = new JPanel();
 			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
@@ -85,20 +90,14 @@ public class CadastraProblemaView extends JDialog {
 			{
 				JButton okButton = new JButton("OK");
 				okButton.addActionListener(new ActionListener() {
-					public void actionPerformed(ActionEvent e) {
-						ProblemaControle oProblemaControle = new ProblemaControle();
+					public void actionPerformed(ActionEvent arg0) {
+						oProblemaControle = new ProblemaControle();
 						
-						int iId = Integer.parseInt(textField.getText());
-						String descProblema = textPane.getText();
-						
-						
-						
-						oProblemaControle.inserirProblema(iId, descProblema);
-						lblProblemaRegistrado.setVisible(true);
-						
+						oProblemaControle.alterarProblema(Integer.parseInt(textFieldId.getText()), 
+								Integer.parseInt(textField.getText()),
+								textPane.getText());
 					}
 				});
-				
 				okButton.setActionCommand("OK");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);
@@ -110,4 +109,5 @@ public class CadastraProblemaView extends JDialog {
 			}
 		}
 	}
+
 }

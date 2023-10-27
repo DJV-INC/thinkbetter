@@ -1,20 +1,16 @@
 package djvinc.thinkbetter.pack_view;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.awt.event.MouseAdapter;
+
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 
 public class MenuView extends JFrame {
 
@@ -105,14 +101,48 @@ public class MenuView extends JFrame {
 		contentPane.add(RegistrarCombo);
 		
 		JComboBox ConsultarCombo = new JComboBox();
-		ConsultarCombo.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ConsultarEmpresaView oConsultarEmpresaView = new ConsultarEmpresaView();
+		ConsultarCombo.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
 				
-				oConsultarEmpresaView.abreConsultarEmpresa();
+				// Consultas
+				if(e.getStateChange() == ItemEvent.SELECTED) {
+					if(ConsultarCombo.getSelectedItem().toString().equals("Empresa")) {
+						ConsultarEmpresaView oConsultarEmpresa = new ConsultarEmpresaView();		
+						oConsultarEmpresa.abreConsultarEmpresa();
+					}
+					
+					if(ConsultarCombo.getSelectedItem().toString().equals("Problema")) {
+						ConsultarProblemaView oConsultarProblema= new ConsultarProblemaView();
+						oConsultarProblema.abreConsultarProblema();
+					}
+					
+					if(ConsultarCombo.getSelectedItem().toString().equals("Grupo")) {
+						ConsultarGrupoView oConsultarGrupo = new ConsultarGrupoView();
+						oConsultarGrupo.abreConsultaGrupo();
+					}
+					
+					if(ConsultarCombo.getSelectedItem().toString().equals("Especialista")) {
+						ConsultarEspecialistaView oConsultarEspecialista = new ConsultarEspecialistaView();
+						oConsultarEspecialista.abreConsultaEspecialista();
+					}
+					
+					if(ConsultarCombo.getSelectedItem().toString().equals("Critério")) {
+						ConsultarCriterioView oConsultarCriterio = new ConsultarCriterioView();
+						oConsultarCriterio.abreConsultaCriterio();
+					}
+					
+					if(ConsultarCombo.getSelectedItem().toString().equals("Grau")) {
+						ConsultarGrauView oConsultarGrau = new ConsultarGrauView();
+						oConsultarGrau.abreConsultaGrau();
+					}
+					
+				
+				
+				}
+				
 			}
 		});
-		ConsultarCombo.setModel(new DefaultComboBoxModel(new String[] {"Escolha", "Empresa", "Problema", "Grupo", "Especialista", "Critério", "Grau"}));
+		ConsultarCombo.setModel(new DefaultComboBoxModel(new String[] {"Escolha", "Empresa", "Problema", "Grupo", "Especialista", "Critério", "Grau", "Resultado"}));
 		ConsultarCombo.setBounds(121, 71, 94, 24);
 		contentPane.add(ConsultarCombo);
 		
