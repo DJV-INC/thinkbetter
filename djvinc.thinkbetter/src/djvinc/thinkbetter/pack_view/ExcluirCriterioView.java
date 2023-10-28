@@ -48,9 +48,9 @@ public class ExcluirCriterioView extends JDialog {
 		lblExcluirCriterio.setBounds(12, 12, 147, 15);
 		contentPanel.add(lblExcluirCriterio);
 		
-		JLabel lblIdDaCriterio = new JLabel("ID do Critério");
-		lblIdDaCriterio.setBounds(12, 75, 147, 15);
-		contentPanel.add(lblIdDaCriterio);
+		JLabel lblIdDoCriterio = new JLabel("ID do Critério");
+		lblIdDoCriterio.setBounds(12, 75, 147, 15);
+		contentPanel.add(lblIdDoCriterio);
 		
 		textField = new JTextField();
 		textField.setBounds(12, 102, 147, 19);

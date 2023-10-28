@@ -48,9 +48,9 @@ public class ExcluirGrupoView extends JDialog {
 		lblExcluirGrupo.setBounds(12, 12, 147, 15);
 		contentPanel.add(lblExcluirGrupo);
 		
-		JLabel lblIdDaGrupo = new JLabel("ID do Grupo");
-		lblIdDaGrupo.setBounds(12, 75, 147, 15);
-		contentPanel.add(lblIdDaGrupo);
+		JLabel lblIdDoGrupo = new JLabel("ID do Grupo");
+		lblIdDoGrupo.setBounds(12, 75, 147, 15);
+		contentPanel.add(lblIdDoGrupo);
 		
 		textField = new JTextField();
 		textField.setBounds(12, 102, 147, 19);

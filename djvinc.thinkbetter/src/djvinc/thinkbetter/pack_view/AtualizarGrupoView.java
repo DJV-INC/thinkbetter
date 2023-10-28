@@ -52,9 +52,9 @@ public class AtualizarGrupoView extends JDialog {
 				contentPanel.add(lblAtualizarGrupo);
 			}
 			{
-				JLabel lblIdDaEmpresa = new JLabel("ID do Grupo");
-				lblIdDaEmpresa.setBounds(12, 39, 135, 15);
-				contentPanel.add(lblIdDaEmpresa);
+				JLabel lblIdDoGrupo = new JLabel("ID do Grupo");
+				lblIdDoGrupo.setBounds(12, 39, 135, 15);
+				contentPanel.add(lblIdDoGrupo);
 			}
 			{
 				textFieldId = new JTextField();
@@ -92,7 +92,8 @@ public class AtualizarGrupoView extends JDialog {
 					public void actionPerformed(ActionEvent arg0) {
 						oGrupoControle = new GrupoControle();
 						
-						oGrupoControle.alterarGrupo(Integer.parseInt(textFieldId.getText()), textField.getText(), 
+						oGrupoControle.alterarGrupo(Integer.parseInt(textFieldId.getText()), 
+								textField.getText(), 
 								Integer.parseInt(textField_1.getText()));
 					}
 				});

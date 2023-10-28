@@ -48,15 +48,15 @@ public class AtualizarEspecialistaView extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Registrar - Especialista");
-		lblNewLabel.setFont(new Font("Dialog", Font.BOLD, 12));
-		lblNewLabel.setBounds(10, 11, 175, 14);
-		contentPanel.add(lblNewLabel);
+		JLabel lblAtualizarEspecialista = new JLabel("Atualizar - Especialista");
+		lblAtualizarEspecialista.setFont(new Font("Dialog", Font.BOLD, 12));
+		lblAtualizarEspecialista.setBounds(10, 11, 175, 14);
+		contentPanel.add(lblAtualizarEspecialista);
 		
 		{
-			JLabel lblIdDaEmpresa = new JLabel("ID do Especialista");
-			lblIdDaEmpresa.setBounds(12, 39, 135, 15);
-			contentPanel.add(lblIdDaEmpresa);
+			JLabel lblIdDoEspecialista = new JLabel("ID do Especialista");
+			lblIdDoEspecialista.setBounds(12, 39, 135, 15);
+			contentPanel.add(lblIdDoEspecialista);
 		}
 		{
 			textFieldId = new JTextField();

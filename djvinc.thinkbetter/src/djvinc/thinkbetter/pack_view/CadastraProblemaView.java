@@ -89,11 +89,11 @@ public class CadastraProblemaView extends JDialog {
 						ProblemaControle oProblemaControle = new ProblemaControle();
 						
 						int iId = Integer.parseInt(textField.getText());
-						String descProblema = textPane.getText();
+						String sDescProblema = textPane.getText();
 						
 						
 						
-						oProblemaControle.inserirProblema(iId, descProblema);
+						oProblemaControle.inserirProblema(iId, sDescProblema);
 						lblProblemaRegistrado.setVisible(true);
 						
 					}

@@ -48,9 +48,9 @@ public class ExcluirProblemaView extends JDialog {
 		lblExcluirProblema.setBounds(12, 12, 147, 15);
 		contentPanel.add(lblExcluirProblema);
 		
-		JLabel lblIdDaProblema = new JLabel("ID do Problema");
-		lblIdDaProblema.setBounds(12, 75, 147, 15);
-		contentPanel.add(lblIdDaProblema);
+		JLabel lblIdDoProblema = new JLabel("ID do Problema");
+		lblIdDoProblema.setBounds(12, 75, 147, 15);
+		contentPanel.add(lblIdDoProblema);
 		
 		textField = new JTextField();
 		textField.setBounds(12, 102, 147, 19);

@@ -54,9 +54,9 @@ public class AtualizarCriterioView extends JDialog {
 			}
 			
 			{
-				JLabel lblIdDaEmpresa = new JLabel("ID da Empresa");
-				lblIdDaEmpresa.setBounds(12, 39, 135, 15);
-				contentPanel.add(lblIdDaEmpresa);
+				JLabel lblIdDoCriterio = new JLabel("ID do Critério");
+				lblIdDoCriterio.setBounds(12, 39, 135, 15);
+				contentPanel.add(lblIdDoCriterio);
 			}
 			{
 				textFieldId = new JTextField();
@@ -65,9 +65,9 @@ public class AtualizarCriterioView extends JDialog {
 				contentPanel.add(textFieldId);
 			}
 			{
-				JLabel lblDescrioDoCritrio = new JLabel("Descrição do critério");
-				lblDescrioDoCritrio.setBounds(12, 71, 173, 15);
-				contentPanel.add(lblDescrioDoCritrio);
+				JLabel lblDescricaoDoCriterio = new JLabel("Descrição do critério");
+				lblDescricaoDoCriterio.setBounds(12, 71, 173, 15);
+				contentPanel.add(lblDescricaoDoCriterio);
 			}
 		
 				JTextPane textPane = new JTextPane();
@@ -75,14 +75,14 @@ public class AtualizarCriterioView extends JDialog {
 				contentPanel.add(textPane);
 			
 			{
-				JLabel label = new JLabel("Tipo do critério");
-				label.setBounds(14, 174, 134, 15);
-				contentPanel.add(label);
+				JLabel lblTipoCriterio = new JLabel("Tipo do critério");
+				lblTipoCriterio.setBounds(14, 174, 134, 15);
+				contentPanel.add(lblTipoCriterio);
 			}
 			{
-				JLabel label = new JLabel("Problema");
-				label.setBounds(161, 174, 134, 15);
-				contentPanel.add(label);
+				JLabel lblProblema = new JLabel("Problema");
+				lblProblema.setBounds(161, 174, 134, 15);
+				contentPanel.add(lblProblema);
 			}
 			
 			textField = new JTextField();

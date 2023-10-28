@@ -46,9 +46,9 @@ public class AtualizarProblemaView extends JDialog {
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		{
-			JLabel lblRegistrarProblema = new JLabel("Registrar - Problema");
-			lblRegistrarProblema.setBounds(12, 12, 186, 15);
-			contentPanel.add(lblRegistrarProblema);
+			JLabel lblAtualizarProblema = new JLabel("Atualizar - Problema");
+			lblAtualizarProblema.setBounds(12, 12, 186, 15);
+			contentPanel.add(lblAtualizarProblema);
 		}
 		{
 			JLabel lblDescrioDoProblema = new JLabel("Descrição do problema");
@@ -57,9 +57,9 @@ public class AtualizarProblemaView extends JDialog {
 		}
 		
 		{
-			JLabel lblIdDaEmpresa = new JLabel("ID da Empresa");
-			lblIdDaEmpresa.setBounds(12, 39, 135, 15);
-			contentPanel.add(lblIdDaEmpresa);
+			JLabel lblIdDoProblema = new JLabel("ID do Problema");
+			lblIdDoProblema.setBounds(12, 39, 135, 15);
+			contentPanel.add(lblIdDoProblema);
 		}
 		{
 			textFieldId = new JTextField();

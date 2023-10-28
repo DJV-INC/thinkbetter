@@ -15,7 +15,7 @@ public class App {
     	
     	MenuView view = new MenuView();
     	
-    	EmpresaControle oEmpresaControle = new EmpresaControle();
+    	/*EmpresaControle oEmpresaControle = new EmpresaControle();
         ProblemaControle oProblemaControle = new ProblemaControle();
         GrupoControle oGrupoControle = new GrupoControle();
         EspecialistaControle oEspecialistaControle = new EspecialistaControle();
@@ -45,7 +45,7 @@ public class App {
         oGrauControle.alterarGrau(1, 9, 7, 1, 1);
 
         oResultadoControle.inserirResultado(10, "Resultado teste");
-        oResultadoControle.alterarResultado(1, 5, "Resultado att");
+        oResultadoControle.alterarResultado(1, 5, "Resultado att");*/
         
     	
     	view.iniciaTela();

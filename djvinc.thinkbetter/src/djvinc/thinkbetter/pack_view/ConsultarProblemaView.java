@@ -55,10 +55,10 @@ public class ConsultarProblemaView extends JDialog {
 			DefaultTableModel oModeloTabela = new DefaultTableModel(sNomesColunas, 0);
 			oProblemaControle = new ProblemaControle();
 			
-			for(ProblemaModel problema : oProblemaControle.consultarProblema()) {
-				int iId = problema.getA02_idProblema();
-				int iIdEmpresa = problema.getA02_idEmpresa();
-				String sDesc = problema.getA02_descProblema();
+			for(ProblemaModel oProblema : oProblemaControle.consultarProblema()) {
+				int iId = oProblema.getA02_idProblema();
+				int iIdEmpresa = oProblema.getA02_idEmpresa();
+				String sDesc = oProblema.getA02_descProblema();
 				
 				Object[] oDados = {iId, sDesc, iIdEmpresa};
 				

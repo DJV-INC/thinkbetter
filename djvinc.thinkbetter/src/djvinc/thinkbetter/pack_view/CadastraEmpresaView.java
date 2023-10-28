@@ -20,7 +20,7 @@ public class CadastraEmpresaView extends JDialog {
 
 	private static final long serialVersionUID = 1L;
 	private final JPanel contentPanel = new JPanel();
-	private JTextField textField;
+	private JTextField textFieldNome;
 	private CadastraEmpresaView dialog;
 
 	/**
@@ -55,10 +55,10 @@ public class CadastraEmpresaView extends JDialog {
 		lblNome.setBounds(12, 39, 70, 15);
 		contentPanel.add(lblNome);
 		
-		textField = new JTextField();
-		textField.setBounds(12, 66, 416, 29);
-		contentPanel.add(textField);
-		textField.setColumns(10);
+		textFieldNome = new JTextField();
+		textFieldNome.setBounds(12, 66, 416, 29);
+		contentPanel.add(textFieldNome);
+		textFieldNome.setColumns(10);
 		
 		JLabel lblEmpresaCadastrada = new JLabel("Empresa cadastrada!");
 		lblEmpresaCadastrada.setBounds(12, 208, 151, 15);
@@ -74,7 +74,7 @@ public class CadastraEmpresaView extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						EmpresaControle oEmpresaControle = new EmpresaControle();
 						
-						String nome = textField.getText();
+						String nome = textFieldNome.getText();
 						
 						oEmpresaControle.inserirEmpresa(nome);
 						

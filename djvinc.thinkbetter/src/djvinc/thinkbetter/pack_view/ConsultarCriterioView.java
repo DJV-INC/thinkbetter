@@ -54,11 +54,11 @@ public class ConsultarCriterioView extends JDialog {
 			DefaultTableModel oModeloTabela = new DefaultTableModel(sNomesColunas, 0);
 			oCriterioControle = new CriterioControle();
 			
-			for(CriterioModel criterio : oCriterioControle.consultarCriterio()) {
-				int iId = criterio.getA05_idCriterio();
-				String sDesc = criterio.getA05_descricao();
-				String sTipo = criterio.getA05_tipo();
-				int iIdProblema= criterio.getA05_idProblema();
+			for(CriterioModel oCriterio : oCriterioControle.consultarCriterio()) {
+				int iId = oCriterio.getA05_idCriterio();
+				String sDesc = oCriterio.getA05_descricao();
+				String sTipo = oCriterio.getA05_tipo();
+				int iIdProblema= oCriterio.getA05_idProblema();
 				
 				
 				

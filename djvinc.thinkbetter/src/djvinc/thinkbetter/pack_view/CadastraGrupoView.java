@@ -61,9 +61,9 @@ public class CadastraGrupoView extends JDialog {
 			contentPanel.add(textField);
 			textField.setColumns(10);
 			{
-				JLabel lblNome_1 = new JLabel("Problema");
-				lblNome_1.setBounds(12, 107, 70, 15);
-				contentPanel.add(lblNome_1);
+				JLabel lblProblema = new JLabel("Problema");
+				lblProblema.setBounds(12, 107, 70, 15);
+				contentPanel.add(lblProblema);
 			}
 			
 			
@@ -88,10 +88,10 @@ public class CadastraGrupoView extends JDialog {
 					public void actionPerformed(ActionEvent e) {
 						GrupoControle oGrupoControle = new GrupoControle();
 						
-						String nome = textField.getText();
-						//String problema = comboBox.getSelectedItem().toString();
+						String sNome = textField.getText();
+						int iProblema = Integer.parseInt(textField_1.getText());
 						
-						oGrupoControle.inserirGrupo(nome, 2);;
+						oGrupoControle.inserirGrupo(sNome, iProblema);
 						
 						lblGrupoRegistrado.setVisible(true);
 						

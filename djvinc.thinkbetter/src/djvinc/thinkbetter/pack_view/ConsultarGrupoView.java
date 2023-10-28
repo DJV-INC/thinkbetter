@@ -54,10 +54,10 @@ public class ConsultarGrupoView extends JDialog {
 			DefaultTableModel oModeloTabela = new DefaultTableModel(sNomesColunas, 0);
 			oGrupoControle = new GrupoControle();
 			
-			for(GrupoModel grupo : oGrupoControle.consultarGrupo()) {
-				int iId = grupo.getA03_idGrupo();
-				String sNome = grupo.getA03_nomeGrupo();
-				int iIdProblema = grupo.getA03_idProblema();
+			for(GrupoModel oGrupo : oGrupoControle.consultarGrupo()) {
+				int iId = oGrupo.getA03_idGrupo();
+				String sNome = oGrupo.getA03_nomeGrupo();
+				int iIdProblema = oGrupo.getA03_idProblema();
 				
 				
 				Object[] oDados = {iId, sNome, iIdProblema};

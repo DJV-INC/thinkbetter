@@ -53,11 +53,11 @@ public class ConsultarEspecialistaView extends JDialog {
 			DefaultTableModel oModeloTabela = new DefaultTableModel(sNomesColunas, 0);
 			oEspecialistaControle = new EspecialistaControle();
 			
-			for(EspecialistaModel especialista : oEspecialistaControle.consultarEspecialista()) {
-				int iId = especialista.getA04_idEspecialista();
-				String sTipo = especialista.getA04_tipoEspecializacao();
-				int iIdGrupo = especialista.getA04_idGrupo();
-				int iIdEmpresa = especialista.getA04_idEmpresa();
+			for(EspecialistaModel oEspecialista : oEspecialistaControle.consultarEspecialista()) {
+				int iId = oEspecialista.getA04_idEspecialista();
+				String sTipo = oEspecialista.getA04_tipoEspecializacao();
+				int iIdGrupo = oEspecialista.getA04_idGrupo();
+				int iIdEmpresa = oEspecialista.getA04_idEmpresa();
 				
 				
 				

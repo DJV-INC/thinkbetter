@@ -54,12 +54,12 @@ public class ConsultarGrauView extends JDialog {
 			DefaultTableModel oModeloTabela = new DefaultTableModel(sNomesColunas, 0);
 			oGrauControle = new GrauControle();
 			
-			for(GrauModel grau : oGrauControle.consultarGrau()) {
-				int iId = grau.getA06_idGrau();
-				int iCerteza = grau.getA06_grauCerteza();
-				int iIncerteza = grau.getA06_grauIncerteza();
-				int iIdCriterio = grau.getA06_idCriterio();
-				int iIdEspecialista = grau.getA06_idEspecialista();
+			for(GrauModel oGrau : oGrauControle.consultarGrau()) {
+				int iId = oGrau.getA06_idGrau();
+				int iCerteza = oGrau.getA06_grauCerteza();
+				int iIncerteza = oGrau.getA06_grauIncerteza();
+				int iIdCriterio = oGrau.getA06_idCriterio();
+				int iIdEspecialista = oGrau.getA06_idEspecialista();
 				
 				
 				
@@ -78,6 +78,18 @@ public class ConsultarGrauView extends JDialog {
 			table.setToolTipText("teste");
 			table.setModel(oModeloTabela);
 			table.setModel(oModeloTabela);
+			
+			JButton btnAtualizar = new JButton("Atualizar");
+			btnAtualizar.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					AtualizarGrauView oAtualizarGrau = new AtualizarGrauView();
+					
+					oAtualizarGrau.abreAtualizarGrau();
+				}
+			});
+			btnAtualizar.setBounds(12, 40, 117, 25);
+			contentPanel.add(btnAtualizar);
+			
 			
 			JButton btnExcluir = new JButton("Excluir");
 			btnExcluir.addActionListener(new ActionListener() {

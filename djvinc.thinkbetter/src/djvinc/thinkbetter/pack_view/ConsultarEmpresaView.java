@@ -58,13 +58,13 @@ public class ConsultarEmpresaView extends JDialog {
 			DefaultTableModel oModeloTabela = new DefaultTableModel(sNomesColunas, 0);
 			oEmpresaControle = new EmpresaControle();
 			
-			for(EmpresaModel empresa : oEmpresaControle.consultarEmpresa()) {
-				int sId = empresa.getA01_codigo();
-				String sNome = empresa.getA01_nomeEmpresa();
+			for(EmpresaModel oEmpresa : oEmpresaControle.consultarEmpresa()) {
+				int sId = oEmpresa.getA01_codigo();
+				String sNome = oEmpresa.getA01_nomeEmpresa();
 				
-				Object[] sDados = {sId, sNome};
+				Object[] oDados = {sId, sNome};
 				
-				oModeloTabela.addRow(sDados);
+				oModeloTabela.addRow(oDados);
 			}
 			
 		JScrollPane scrollPane = new JScrollPane();
